@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Frontend
+node_modules/
+coverage/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+secrets/
+
+# Runtime data and packet captures (may contain sensitive data)
+/data/
+/artifacts/
+*.log
+*.pcap
+*.pcapng
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
