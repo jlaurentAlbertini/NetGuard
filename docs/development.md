@@ -214,14 +214,3 @@ ne dépend pas d’un framework HTTP ou d’une bibliothèque de capture. Un bes
 externe est fourni via le contrat interne approprié, sans imposer une abstraction
 à chaque opération.
 
-### Vérification du squelette et portée
-
-À l’issue de 0.4.2, les 14 `__init__.py` de 0.4.1 sont toujours vides : aucun
-import, réexport, cycle ou accès technique n’est présent. `pyproject.toml` et
-l’arborescence Python restent inchangés, sans dépendance runtime.
-
-La vérification de cette étape est une inspection du squelette et une revue de
-cohérence documentaire. Aucun contrôleur AST, import-linter, hook, test fictif,
-configuration CI ou package anticipé n’est ajouté. Les contrats Python concrets,
-les Composition Roots, les outils de qualité et les implémentations sont reportés
-aux étapes correspondantes. 0.4.3 n’est pas commencée.
