@@ -3711,15 +3711,19 @@ uniquement pour augmenter artificiellement le réalisme.
 
 ### Tests end-to-end
 
-NetGuard doit pouvoir posséder un petit nombre de scénarios automatisés couvrant
-un parcours représentatif complet.
+Les scénarios automatisés déterministes couvrent un parcours représentatif avec
+des observations synthétiques, de petits PCAP contrôlés ou des adapters contrôlés.
+Des fakes aux frontières peuvent isoler les effets externes selon le contrat testé.
+Cette suite standard ne nécessite ni réseau réel, ni privilèges root, ni Internet,
+ni laboratoire actif.
 
-Le scénario canonique est conceptuellement :
+Ils sont distincts du scénario E2E d'acceptation du laboratoire exigé par
+[NFR-003](requirements/non-functional.md). Ce scénario de référence doit vérifier :
 
 ```text
-source contrôlée
+trafic généré dans le laboratoire
         ↓
-ingestion
+capture réelle par NetGuard
         ↓
 normalisation
         ↓
@@ -3729,13 +3733,16 @@ DetectionResult / Evidence
         ↓
 Alert
         ↓
-persistance ou consultation
+persistance
+        ↓
+consultation via API
 ```
 
-Ces scénarios utilisent autant que possible des entrées reproductibles.
-
-Un PCAP contrôlé ou une autre source déterministe est préféré à une dépendance au
-trafic réseau réellement présent pendant l'exécution du test.
+Ce scénario spécialisé peut être automatisé séparément de la suite standard avec
+les prérequis du laboratoire. Les tests déterministes, notamment sur PCAP, le
+complètent sans remplacer la preuve de capture réelle, de persistance et de
+consultation de l'alerte. Aucun résultat attendu ne doit être fabriqué directement
+en base ou dans l'interface pour tenir lieu de cette preuve.
 
 Les tests end-to-end complètent les tests plus ciblés ; ils ne remplacent pas les
 tests unitaires ou d'intégration permettant de localiser précisément une
@@ -3877,7 +3884,7 @@ Aucun outil d'exécution parallèle n'est imposé à cette étape.
 
 Les tests backend sont séparés du code distribué sous `src`.
 
-La racine prévue est :
+La racine canonique des tests backend est `backend/tests/` :
 
 ```text
 backend/

@@ -1255,6 +1255,8 @@ La sévérité n'est pas automatiquement une propriété universelle calculée p
 
 Lorsqu'elle existe, elle suit une politique métier documentée.
 
+Pour une Alert du premier incrément, la sévérité est obligatoire conformément à [FR-010](requirements/functional.md). Cette exigence ne rend pas son calcul obligatoire dans chaque détecteur : la politique domaine peut intervenir lors de la transformation du résultat en Alert.
+
 Selon la règle, cette politique peut être :
 
 - directement définie par le détecteur ;

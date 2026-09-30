@@ -2125,8 +2125,10 @@ Une alerte du premier incrément doit permettre de répondre aux questions suiva
 6. Quels agrégats ont été calculés ?
 7. Quels paramètres ont permis de satisfaire la règle ?
 8. Quelles limitations connues affectent la conclusion ?
-9. Quelle sévérité a été attribuée, lorsqu'elle existe ?
+9. Quelle sévérité a été attribuée ?
 10. Quel est l'état de suivi de l'alerte, lorsqu'un tel suivi existe ?
+
+Conformément à [FR-010](requirements/functional.md), une Alert du premier incrément comporte une sévérité. Son attribution suit une politique métier selon M133 ; elle ne constitue ni une confiance implicite ni une preuve d'attaque confirmée, conformément à M134 et M135.
 
 Cela suffit à produire des alertes explicables sans imposer :
 

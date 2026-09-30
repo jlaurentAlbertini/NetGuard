@@ -1,13 +1,13 @@
 # Roadmap
 
-Statut actuel : étape 0 en cours. Arborescence, exigences, architecture et quatre ADR rédigés ; modèles métier, topologie de capture et threat model détaillé restent à définir. Aucune fonctionnalité implémentée.
+Statut actuel : conception de l’étape 0 rédigée, corrections de l’audit 0.7 intégrées et dernière validation de clôture à effectuer. Arborescence, exigences, architecture, modèles métier M1–M140, conventions de développement, threat model et sept ADR sont documentés. La topologie concrète du laboratoire sera préparée au début de l’étape 1 sur la base du modèle réseau sémantique déjà conçu. Aucune fonctionnalité implémentée.
 
 La progression suit le cahier des charges :
 
 0. Conception et décisions architecturales.
-1. Laboratoire Docker isolé.
+1. Préparation de la topologie concrète et construction du laboratoire Docker isolé.
 2. Sensor et preuve de capture réelle.
-3. Normalisation vers NetworkEvent.
+3. Normalisation vers NetworkObservation.
 4. Moteur générique de détection.
 5. Première règle de scan de ports.
 6. PostgreSQL et migrations.

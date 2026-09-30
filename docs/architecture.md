@@ -73,7 +73,7 @@ NetGuard n'utilise pas de microservices pour le premier incrément.
 
 Cette décision est détaillée dans :
 
-[`ADR-001 — Modular Monolith`](./decisions/ADR-001-modular-monolith.md)
+[`ADR-001 — Modular Monolith`](./decisions/ADR-001-Modular-Monolith.md)
 
 ---
 
@@ -324,7 +324,7 @@ Le Core ne dépend pas des objets propres à la technologie de capture.
 
 Cette décision est détaillée dans :
 
-[`ADR-002 — Normalized Domain Observations`](./decisions/ADR-002-normalized-domain-observations.md)
+[`ADR-002 — Normalized Domain Observations`](./decisions/ADR-002-normalized-domain-observation.md)
 
 ---
 
@@ -1103,7 +1103,7 @@ Les documents suivants complètent cette architecture :
 
 - [`data-models.md`](./data-models.md) — modèles de domaine et invariants M1 à M140 ;
 - [`detection-engine.md`](./detection-engine.md) — fonctionnement détaillé du moteur de détection ;
-- [`network-model.md`](./network-model.md) — représentation et interprétation du réseau ;
+- [`network-model.md`](./network-model.md) — modèle réseau sémantique et préparation de la topologie du laboratoire ;
 - [`security.md`](./security.md) — exigences et principes de sécurité ;
 - [`threat-model.md`](./threat-model.md) — menaces prises en compte ;
 - [`testing.md`](./testing.md) — stratégie de validation et de test ;
@@ -1112,10 +1112,13 @@ Les documents suivants complètent cette architecture :
 
 Les ADR actuellement structurants sont notamment :
 
-- [`ADR-001 — Modular Monolith`](./decisions/ADR-001-modular-monolith.md)
-- [`ADR-002 — Normalized Domain Observations`](./decisions/ADR-002-normalized-domain-observations.md)
+- [`ADR-001 — Modular Monolith`](./decisions/ADR-001-Modular-Monolith.md)
+- [`ADR-002 — Normalized Domain Observations`](./decisions/ADR-002-normalized-domain-observation.md)
 - [`ADR-003 — Inward Dependencies`](./decisions/ADR-003-inward-dependencies.md)
 - [`ADR-004 — Bounded Deterministic Processing`](./decisions/ADR-004-bounded-deterministic-processing.md)
+- [`ADR-005 — Separate Detection Results from Alerts`](./decisions/ADR-005-Separate-Detection-Results.md)
+- [`ADR-006 — Separate Domain and Persistence Models`](./decisions/ADR-006-separate-domain-and-persistence-models.md)
+- [`ADR-007 — No Universal Pre-Detection Aggregation`](./decisions/ADR-007-no-universal-pre-detection-aggregation.md)
 
 ---
 
