@@ -1,6 +1,6 @@
 # Roadmap
 
-Statut actuel : conception de l’étape 0 rédigée, corrections de l’audit 0.7 intégrées et dernière validation de clôture à effectuer. Arborescence, exigences, architecture, modèles métier M1–M140, conventions de développement, threat model et sept ADR sont documentés. La topologie concrète du laboratoire sera préparée au début de l’étape 1 sur la base du modèle réseau sémantique déjà conçu. Aucune fonctionnalité implémentée.
+Statut actuel : conception de l’étape 0 rédigée, corrections de l’audit 0.7 intégrées et dernière validation de clôture à effectuer. Arborescence, exigences, architecture, modèles métier M1–M140, conventions de développement, threat model et sept ADR sont documentés. Le cadrage (1.1) et la topologie concrète (1.2) du laboratoire sont documentés sur la base du modèle réseau sémantique déjà conçu. La qualification de l’environnement d’exécution reste à réaliser. Aucune fonctionnalité implémentée.
 
 La progression suit le cahier des charges :
 
@@ -27,3 +27,17 @@ La progression suit le cahier des charges :
 20. Stabilisation et release v1.0.
 
 Tests, sécurité et documentation accompagnent chaque incrément dès le départ ; les étapes dédiées servent à les consolider. Ne pas entreprendre les extensions avant d’avoir validé la première chaîne complète sur du trafic réel.
+
+## Suivi du laboratoire — étape 1
+
+- **1.1 — Cadrage et prérequis : terminé.** [Prérequis du laboratoire](lab-environment.md), périmètre et critères de qualification définis. Le fonctionnement, la visibilité du capteur et l’isolation restent à valider.
+- **1.2 — Topologie réseau concrète : définie.** [Schéma, adressage et flux](lab-topology.md) : bridge interne, trois services, capteur dans l’espace réseau de la cible et administration via Docker. Visibilité, isolation et absence de conflit d’adressage restent à vérifier avant ou pendant les essais.
+- **1.3 — Positionnement du capteur et preuve de visibilité : à réaliser.**
+- **1.4 — Isolation et permissions : à réaliser.**
+- **1.5 — Construction avec Docker Compose : à réaliser.**
+- **1.6 — Scénarios de trafic contrôlés : à réaliser.**
+- **1.7 — Captures de référence : à réaliser.**
+- **1.8 — Vérifications automatiques et reproductibilité : à réaliser.**
+- **1.9 — Documentation et validation finale : à réaliser.**
+
+Ces sous-étapes détaillent le laboratoire sans renuméroter les étapes principales. La preuve de capture du lab prépare l’implémentation du sensor de l’étape 2. Les captures témoins ne constituent pas l’implémentation de l’analyse PCAP de l’étape 12. La clôture finale de l’étape 0 reste à confirmer séparément.
