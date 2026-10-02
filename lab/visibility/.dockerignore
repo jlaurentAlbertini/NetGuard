@@ -1,0 +1,6 @@
+**
+!Dockerfile
+!.dockerignore
+!roles.py
+!checks.py
+!packages.lock

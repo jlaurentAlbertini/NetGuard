@@ -1,0 +1,83 @@
+# Laboratoire 1.5 : image verrouillée, preuves de visibilité et d’isolation.
+x-common: &common
+  image: ${LAB_IMAGE_REF:-netguard-lab:1.5}
+  build:
+    context: .
+    args:
+      LAB_SOURCE_SHA256: ${LAB_SOURCE_SHA256:-unverified}
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  pids_limit: 32
+  mem_limit: 128m
+  cpus: 0.5
+  restart: "no"
+  logging:
+    driver: json-file
+    options:
+      max-size: 1m
+      max-file: "1"
+
+services:
+  target-web:
+    <<: *common
+    user: "65532:65532"
+    command: [target]
+    dns: [127.0.0.1]
+    dns_search: ["."]
+    dns_opt: ["timeout:1", "attempts:1"]
+    sysctls:
+      net.ipv6.conf.all.disable_ipv6: "1"
+    networks:
+      monitored:
+        ipv4_address: ${LAB_TARGET_IP:-172.30.50.20}
+    healthcheck:
+      test: [CMD, python3, /opt/lab/roles.py, health]
+      interval: 1s
+      timeout: 2s
+      retries: 20
+
+  capture-probe:
+    <<: *common
+    # Démarrage : ouvrir la capture puis abaisser tcpdump vers nobody.
+    user: "0:0"
+    cap_add: [NET_RAW, SETUID, SETGID]
+    network_mode: service:target-web
+    depends_on:
+      target-web:
+        condition: service_healthy
+    environment:
+      LAB_SOURCE_IP: ${LAB_SOURCE_IP:-172.30.50.10}
+      LAB_TARGET_IP: ${LAB_TARGET_IP:-172.30.50.20}
+      LAB_INTERFACE: eth0
+    command: [capture]
+    tmpfs: ["/capture:size=8m,mode=0770,uid=0,gid=65534"]
+    stop_grace_period: 5s
+
+  traffic-generator:
+    <<: *common
+    user: "65532:65532"
+    command: [idle]
+    dns: [127.0.0.1]
+    dns_search: ["."]
+    dns_opt: ["timeout:1", "attempts:1"]
+    sysctls:
+      net.ipv6.conf.all.disable_ipv6: "1"
+    environment:
+      LAB_SOURCE_IP: ${LAB_SOURCE_IP:-172.30.50.10}
+      LAB_TARGET_IP: ${LAB_TARGET_IP:-172.30.50.20}
+    networks:
+      monitored:
+        ipv4_address: ${LAB_SOURCE_IP:-172.30.50.10}
+
+networks:
+  monitored:
+    driver: bridge
+    internal: true
+    driver_opts:
+      com.docker.network.bridge.gateway_mode_ipv4: isolated
+    enable_ipv6: false
+    ipam:
+      config:
+        - subnet: ${LAB_SUBNET:-172.30.50.0/24}
+          gateway: ${LAB_GATEWAY:-172.30.50.1}
